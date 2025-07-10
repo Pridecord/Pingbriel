@@ -2,3 +2,8 @@ name: Pingbriel
 version: '1.0-SNAPSHOT'
 main: dev.sdriver1.pingbriel.Pingbriel
 api-version: '1.21'
+commands:
+  ping_color:
+    description: Set your mention-highlight color
+    usage: /ping_color <preset|#RRGGBB>
+permissions: {}
