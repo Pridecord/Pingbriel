@@ -24,7 +24,7 @@ public class PingColorCommand implements CommandExecutor {
                              String label,
                              String[] args) {
         if (!(sender instanceof Player) || args.length != 1) {
-            sender.sendMessage(Component.text("Usage: /ping_color <preset|#RRGGBB>"));
+            sender.sendMessage(Log.info("Usage: /ping_color <preset|#RRGGBB>"));
             return true;
         }
 
@@ -34,9 +34,9 @@ public class PingColorCommand implements CommandExecutor {
             UUID uid = ((Player) sender).getUniqueId();
             plugin.getPingColors().put(uid, choice);
             plugin.savePingColors();
-            sender.sendMessage(Component.text("Ping color set to " + choice));
+            sender.sendMessage(Log.success("Ping color set to " + choice));
         } else {
-            sender.sendMessage(Component.text("Invalid color. Use a preset or #RRGGBB."));
+            sender.sendMessage(Log.error("Invalid color. Use a preset or #RRGGBB."));
         }
         return true;
     }

@@ -7,3 +7,4 @@ commands:
     description: Set your mention-highlight color
     usage: /ping_color <preset|#RRGGBB>
 permissions: {}
+description: Created for the Pridecord project.
