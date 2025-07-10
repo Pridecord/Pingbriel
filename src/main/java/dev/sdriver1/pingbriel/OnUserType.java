@@ -20,13 +20,15 @@ public class OnUserType implements Listener {
 
     @EventHandler
     public void OnUserSendMessage(ChatEvent event) {
-        // 1) play ping sound exactly as you had before
         String rawMessage = mm.serialize(event.message());
+        String lower = rawMessage.toLowerCase();
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (rawMessage.contains("@" + p.getName())) {
-                p.playSound(p.getLocation(),
+            if (lower.contains("@" + p.getName().toLowerCase())) {
+                p.playSound(
+                        p.getLocation(),
                         Sound.ENTITY_EXPERIENCE_ORB_PICKUP,
-                        2f, 1f);
+                        2f, 1f
+                );
             }
         }
 
