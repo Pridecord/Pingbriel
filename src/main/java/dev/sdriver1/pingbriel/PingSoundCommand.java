@@ -19,13 +19,13 @@ public class PingSoundCommand implements CommandExecutor {
             return true;
         }
         if (args.length != 1 || (!args[0].equalsIgnoreCase("true") && !args[0].equalsIgnoreCase("false"))) {
-            sender.sendMessage("Usage: /ping_sound <true|false>");
+            sender.sendMessage(Log.info("Usage: /ping_sound <true|false>"));
             return true;
         }
         boolean on = Boolean.parseBoolean(args[0]);
         Player p = (Player) sender;
         plugin.setPingSoundEnabled(p.getUniqueId(), on);
-        sender.sendMessage("Ping sound " + (on ? "enabled" : "disabled") + ".");
+        sender.sendMessage(Log.success("Ping sound " + (on ? "enabled" : "disabled") + "."));
         return true;
     }
 }
