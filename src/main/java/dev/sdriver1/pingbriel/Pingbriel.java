@@ -42,9 +42,15 @@ public class Pingbriel extends JavaPlugin {
         }
         pingSoundCfg = YamlConfiguration.loadConfiguration(pingSoundFile);
 
-        // Gets
+        // Color
         getCommand("ping_color").setExecutor(new PingColorCommand(this));
+        getCommand("ping_color").setTabCompleter(new PingColorTabCompleter());
+
+        // Sound
         getCommand("ping_sound").setExecutor(new PingSoundCommand(this));
+        getCommand("ping_sound").setTabCompleter(new PingSoundTabCompleter());
+
+        // Plugin/Server
         getServer().getPluginManager().registerEvents(new OnUserType(this), this);
     }
 
