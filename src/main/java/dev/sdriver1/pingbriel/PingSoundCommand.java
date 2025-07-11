@@ -14,18 +14,30 @@ public class PingSoundCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage("Only players can toggle ping sound.");
+        if (!(sender instanceof Player player)) {
+            sender.sendMessage("Only players may use this command.");
             return true;
         }
-        if (args.length != 1 || (!args[0].equalsIgnoreCase("true") && !args[0].equalsIgnoreCase("false"))) {
-            sender.sendMessage(Log.info("Usage: /ping_sound <true|false>"));
+
+        if (args.length != 1) {
+            sender.sendMessage("Usage: /ping_sound <on|off>");
             return true;
         }
-        boolean on = Boolean.parseBoolean(args[0]);
-        Player p = (Player) sender;
-        plugin.setPingSoundEnabled(p.getUniqueId(), on);
-        sender.sendMessage(Log.success("Ping sound " + (on ? "enabled" : "disabled") + "."));
+
+        String arg = args[0].toLowerCase();
+        boolean enabled;
+        if (arg.equals("on") || arg.equals("true")) {
+            enabled = true;
+        } else if (arg.equals("off") || arg.equals("false")) {
+            enabled = false;
+        } else {
+            sender.sendMessage("Usage: /ping_sound <on|off>");
+            return true;
+        }
+
+        plugin.setPingSoundEnabled(player.getUniqueId(), enabled);
+
+        sender.sendMessage("Ping sound " + (enabled ? "enabled" : "disabled") + ".");
         return true;
     }
 }
