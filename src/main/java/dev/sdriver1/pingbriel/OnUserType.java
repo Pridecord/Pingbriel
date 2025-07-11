@@ -26,10 +26,14 @@ public class OnUserType implements Listener {
         String raw = mm.serialize(event.message());
         String lower = raw.toLowerCase();
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (lower.contains(p.getName().toLowerCase())) {
-                p.playSound(p.getLocation(),
+            String nameLower = p.getName().toLowerCase();
+            if (lower.contains(nameLower)
+                    && plugin.isPingSoundEnabled(p.getUniqueId())) {
+                p.playSound(
+                        p.getLocation(),
                         Sound.ENTITY_EXPERIENCE_ORB_PICKUP,
-                        2f, 1f);
+                        2f, 1f
+                );
             }
         }
 

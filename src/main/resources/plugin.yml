@@ -6,5 +6,8 @@ commands:
   ping_color:
     description: Set your mention-highlight color
     usage: /ping_color <preset|#RRGGBB>
+  ping_sound:
+    description: Toggle if you want ping sound or not
+    usage: /ping_sound <True|False>
 permissions: {}
 description: Created for the Pridecord project.
